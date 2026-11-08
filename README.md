@@ -1,6 +1,7 @@
 IA Automation - Nahuel Witt - Entrega Final - README
 
 1. Caso de negocio con ROI justificado
+
 Actualmente en un ecommerce se estan recibiendo casos de transacciones fallidas que deben ser revisadas una a una para determinar principalmente el motivo y posteriormente definir en función de un análisis manual, cual es la posible solución para ese caso especifico, si es que la hubiese.
 Este proceso requiere de una inversión diaria de 1-2 horas (40 horas mensuales) solo para clasificar de manera ordenada todos los casos, quitando tiempo disponible de análisis, que es donde se encuentra el verdadero valor. Cómo está atado al tráfico y las transacciones del sitio, este proceso rutinario se ve impactado por el crecimiento del mismo durante eventos como HotSale, lo cual lo convierte en una tarea que no escala a largo plazo si no se automatiza.
 A su vez, cada hora que ocupa el analista, tiene un costo de $9000 si nos basamos en un salario promedio de ~$1.600.000, por lo que estaríamos teniendo un costo asociado de aproximadamente $360.000 por mes, considerando las 40 horas mensuales.
