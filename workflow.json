@@ -1,0 +1,870 @@
+{
+  "name": "Transacciones fallidas ecommerce",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0c5bfee3-30c3-49f5-932c-bafd49c8e0b8",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        -48,
+        592
+      ],
+      "id": "6b3a9e08-8f22-4bf7-b717-b8eb45c2fa5a",
+      "name": "Recepción transacciones fallidas",
+      "webhookId": "0c5bfee3-30c3-49f5-932c-bafd49c8e0b8"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c",
+          "mode": "list",
+          "cachedResultName": "Transacciones_fallidas_ecommerce",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Transacciones_fallidas_ecommerce",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "transaction_id": "={{ $json.transaction_id }}",
+            "customer_email": "={{ $json.customer.email }}",
+            "amount": "={{ $json.amount }}",
+            "currency": "={{ $json.currency }}",
+            "installments": "={{ $json.payment_method.installments }}",
+            "type": "={{ $json.payment_method.type }}",
+            "brand": "={{ $json.payment_method.brand }}",
+            "issuer_bank": "={{ $json.payment_method.issuer_bank }}",
+            "status": "={{ $json.gateway_response.status }}",
+            "gateway_error": "={{ $json.gateway_response.gateway_message }}"
+          },
+          "matchingColumns": [
+            "transaction_id"
+          ],
+          "schema": [
+            {
+              "id": "transaction_id",
+              "displayName": "transaction_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "customer_email",
+              "displayName": "customer_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "amount",
+              "displayName": "amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "currency",
+              "displayName": "currency",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "type",
+              "displayName": "type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "brand",
+              "displayName": "brand",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "issuer_bank",
+              "displayName": "issuer_bank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "installments",
+              "displayName": "installments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "gateway_error",
+              "displayName": "gateway_error",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "posible_solucion",
+              "displayName": "posible_solucion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        592
+      ],
+      "id": "a3c5719e-5101-4f2c-aa26-05d277e53e29",
+      "name": "Actualización base ordenes fallidas",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "cmTENzM69nlspYZj",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=session_transaction"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        1200,
+        912
+      ],
+      "id": "e9a9b8cd-3ae6-4750-a146-e6588669b68f",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        176,
+        160
+      ],
+      "id": "f85c8291-fc46-42ce-ba11-d4b505423ff8",
+      "name": "Ejecutar flujo RAG"
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        992
+      ],
+      "id": "c3155f79-8713-4d32-96a9-6feca0df6438",
+      "name": "Embeddings Cohere",
+      "credentials": {
+        "cohereApi": {
+          "id": "OoC1YzGevoVtGmp2",
+          "name": "Cohere account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"posible_solucion\": {\n      \"type\": \"string\",\n      \"description\": \"Diagnóstico y posible solución detallada para la transacción fallida\"\n    }\n  },\n  \"required\": [\"posible_solucion\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1584,
+        880
+      ],
+      "id": "d91fe019-b406-4813-b085-ff1791af9a45",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c",
+          "mode": "list",
+          "cachedResultName": "Transacciones_fallidas_ecommerce",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Transacciones_fallidas_ecommerce",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "transaction_id": "={{ $('Loop Over Items').first().json.transaction_id }}",
+            "posible_solucion": "={{ $json.output.properties.posible_solucion.description }}"
+          },
+          "matchingColumns": [
+            "transaction_id"
+          ],
+          "schema": [
+            {
+              "id": "transaction_id",
+              "displayName": "transaction_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "customer_email",
+              "displayName": "customer_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "amount",
+              "displayName": "amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "currency",
+              "displayName": "currency",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "type",
+              "displayName": "type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "brand",
+              "displayName": "brand",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "issuer_bank",
+              "displayName": "issuer_bank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "installments",
+              "displayName": "installments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "gateway_error",
+              "displayName": "gateway_error",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "posible_solucion",
+              "displayName": "posible_solucion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1744,
+        752
+      ],
+      "id": "cd82c0c7-f968-43f4-9d72-2b1aad361589",
+      "name": "Actualizar transacciones con posible solución",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "cmTENzM69nlspYZj",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        768,
+        608
+      ],
+      "id": "1f0b5df3-532a-47ae-aecc-df239ee4ef77",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "https://docs.google.com/document/d/1kja5_TfK2dDucfsQogE7RN0tVPqRicKNnwmAk2HXWSc/edit?tab=t.0"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        416,
+        160
+      ],
+      "id": "b551e294-4fbb-4b2f-b185-cd9c5c4fb15c",
+      "name": "Traer documento con reglas de negocio",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "tmtSYwQjtVooOm5v",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        },
+        "clearStore": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        640,
+        160
+      ],
+      "id": "0b4dfeee-6274-437e-b810-ca7c466bfec7",
+      "name": "Simple Vector Store1"
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        608,
+        384
+      ],
+      "id": "b69c8259-ea6a-4444-89c6-ec4620338a73",
+      "name": "Embeddings Cohere1",
+      "credentials": {
+        "cohereApi": {
+          "id": "OoC1YzGevoVtGmp2",
+          "name": "Cohere account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        784,
+        368
+      ],
+      "id": "6f05ea62-da81-4fc8-8b7a-b119f9e1abb6",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Busca en la base de conocimiento oficial de políticas de pagos, códigos de error de pasarelas, análisis post-mortem y reglas antifraude del e-commerce. Utiliza esta herramienta obligatoriamente para buscar los criterios de diagnóstico técnico, las acciones operativas permitidas (como reintentos automáticos, envío de links de pago o derivación a fraude) y las recomendaciones de infraestructura ante transacciones rechazadas.\nNo inventes soluciones cuando no tenes claridad sobre el caso, en su defecto, marcalo como revisión manual.",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        1312,
+        880
+      ],
+      "id": "2f97b9fa-8da8-4f5c-ae92-b02088393fb2",
+      "name": "Buscar en documentos"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c",
+          "mode": "list",
+          "cachedResultName": "Transacciones_fallidas_ecommerce",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Transacciones_fallidas_ecommerce",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        560,
+        592
+      ],
+      "id": "f053b819-8070-42a6-b0b2-fdae1e227f8e",
+      "name": "Obtener transacciones fallidas",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "cmTENzM69nlspYZj",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtenemos el JSON que llega del Webhook\nconst inputJson = $input.first().json;\n\n// n8n suele guardar el cuerpo del POST en inputJson.body, o a veces directo en inputJson\nconst payload = inputJson.body || inputJson;\n\n// Buscamos el array de transacciones donde sea que esté\nlet transactions = [];\n\nif (payload.transactions && Array.isArray(payload.transactions)) {\n  transactions = payload.transactions;\n} else {\n  // Búsqueda automática de cualquier array dentro del payload\n  const foundKey = Object.keys(payload).find(key => Array.isArray(payload[key]));\n  if (foundKey) {\n    transactions = payload[foundKey];\n  }\n}\n\n// Si encontramos las transacciones, devolvemos cada una como un ítem independiente\nif (transactions.length > 0) {\n  return transactions.map(tx => ({ json: tx }));\n} else {\n  // Si no se encuentra, devolvemos un registro indicando qué llegó para depurar\n  return [{ json: { error: \"No se encontró el array transactions\", received_keys: Object.keys(payload) } }];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        160,
+        592
+      ],
+      "id": "035508de-cada-43bd-b79f-468a40a7b591",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1904,
+        928
+      ],
+      "id": "113ce538-523a-48db-bee4-f003d8c65ffb",
+      "name": "Wait",
+      "webhookId": "e22c410f-b249-4cf9-901d-44e26f2c0baa"
+    },
+    {
+      "parameters": {
+        "sendTo": "wittnahuel@gmail.com",
+        "subject": "Transcciones fallidas: Reporte diario",
+        "emailType": "text",
+        "message": "El reporte de transacciones fallidas fue actualizado",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1776,
+        560
+      ],
+      "id": "5cecdedd-35d2-42d0-8cd0-747267172f26",
+      "name": "Notificar reporte actualizado",
+      "webhookId": "91412184-47e8-4897-b428-df8d7013e6f8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "dOHygj7fn25UrA6Y",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        912,
+        880
+      ],
+      "id": "bc8c14a2-2a0c-4810-8274-29e9480a767e",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analiza la siguiente transacción fallida y determina el diagnóstico y la posible solución según el manual:\n- ID de Transacción: {{ $json.transaction_id }}\n- Monto: {{ $json.amount }} {{ $json.currency }}\n- Método de pago: {{ $json.type }} - Marca: {{ $json.brand }} (Banco: {{ $json.issuer_bank }}) - Cuotas: {{ $json.installments }}\n- Estado y error de pasarela: Status {{ $json.status }}, Código: {{ $json.gateway_error }}\n- Email del cliente: {{ $json.customer_email }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Sos un Analista Senior de Operaciones de Pagos y Prevención de Fraude en un e-commerce de alto tráfico. Tu especialidad es auditar transacciones fallidas en lote, identificar patrones de riesgo sistémico y definir la acción operativa óptima para cada caso.\n\nAlcance: Analizás el lote de transacciones provisto por el sistema y lo cruzás estrictamente con las políticas internas de recuperación de pagos y manuales de fraude recuperados desde tu base de conocimiento (RAG).\n\nTono: Profesional, técnico, analítico y orientado a la eficiencia de negocio (recuperación de ingresos vs. mitigación de fraude).\n\nQué PODÉS hacer:\n\nClasificar los errores técnicos de las pasarelas en categorías de negocio inteligibles.\n\nDecidir y asignar una acción automática para cada transacción mediante una breve descripción que se debe volcar en un campo llamado \"posible solución\" que luego se va a imprimir en el sheets principal.\n\nDetectar anomalías masivas o caídas de pasarelas/bancos basadas en concentraciones de errores.\n\nQué NO PODÉS hacer:\n\nModificar montos, datos de clientes o reintentar cobros por fuera de los canales permitidos por las reglas.\n\nInventar políticas que no estén respaldadas en los documentos del RAG.\n\nCómo actuar ante ambigüedades o casos fuera de alcance:\n\nSi un código de error es desconocido o no figura en las políticas del RAG, no lo descartes: clasificalo automáticamente en la categoría revision_manual_urgente y explicá brevemente la ambigüedad en el campo de \"posible solución\" para que un humano lo intervenga."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1280,
+        656
+      ],
+      "id": "c65ab159-58d8-4555-a96e-acdd71c38de5",
+      "name": "AI Agent",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        512
+      ],
+      "id": "4948cce6-717d-4a23-8f22-e0dfbd8640a8",
+      "name": "Aggregate"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Recepción transacciones fallidas": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualización base ordenes fallidas": {
+      "main": [
+        [
+          {
+            "node": "Obtener transacciones fallidas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ejecutar flujo RAG": {
+      "main": [
+        [
+          {
+            "node": "Traer documento con reglas de negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Buscar en documentos",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar transacciones con posible solución": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Traer documento con reglas de negocio": {
+      "main": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar en documentos": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener transacciones fallidas": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Actualización base ordenes fallidas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Actualizar transacciones con posible solución",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Notificar reporte actualizado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "0964d622-96ac-4b8e-8d81-84db52ab4fb4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "54f4344b2100efb40c8c3dfeacccac3d16c5515c1a0a570b2ec8e8be28ca5d98"
+  },
+  "nodeGroups": [],
+  "id": "VAbG6B0DQcueANvn",
+  "tags": []
+}
