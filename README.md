@@ -1270,6 +1270,8 @@ El json a utilizar en postman es el siguiente con el metodo POST:
 En este caso, se decidió utilizar un Agente IA y no un nodo Basic LLM Chain, principalmente porque se requiere que el agente tenga un razonamiento dinámico, uso de herramientas externas (RAG) y toma de decisiones de manera autónoma para poder devolver una respuesta coherente que le permita al analista tener un panorama claro sobre lo sucedido con cada transacción.
 En resumen el Agente actúa como un analista autónomo capaz de investigar, razonar y estructurar una solución técnica precisa para cada caso.
 
+Documento que utiliza el workflow RAG: https://docs.google.com/document/d/1kja5_TfK2dDucfsQogE7RN0tVPqRicKNnwmAk2HXWSc/edit?tab=t.0#heading=h.3g467lhg43bw
+
 System Prompt:
 Sos un Analista Senior de Operaciones de Pagos y Prevención de Fraude en un e-commerce de alto tráfico. Tu especialidad es auditar transacciones fallidas en lote, identificar patrones de riesgo sistémico y definir la acción operativa óptima para cada caso.
 
