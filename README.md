@@ -7,6 +7,9 @@ Este proceso requiere de una inversión diaria de 1-2 horas (40 horas mensuales)
 A su vez, cada hora que ocupa el analista, tiene un costo de $9000 si nos basamos en un salario promedio de ~$1.600.000, por lo que estaríamos teniendo un costo asociado de aproximadamente $360.000 por mes, considerando las 40 horas mensuales.
 Por otro lado, este modelo dejaría de tener sentido económico o técnico si el volumen de transacciones fallidas mensuales cayera por debajo de un umbral mínimo (por ejemplo, menos de 10 casos al mes), donde el costo de mantenimiento de las APIs, los nodos de n8n y la infraestructura superaría el ahorro de tiempo humano; o bien si la tasa de excepciones complejas no automatizables superará el 80%, haciendo que la intervención manual siga siendo inevitable. 
 
+Archivo donde se vuelcan las transacciones:
+https://docs.google.com/spreadsheets/d/1gqm0koARH19-nPS_9Nw5bj6COoLwMnnHK5S_PQyCp-c/edit?gid=0#gid=0
+
 
 2. Al menos dos fuentes de entrada distintas
 
