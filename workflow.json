@@ -184,20 +184,6 @@
       }
     },
     {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=session_transaction"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.4,
-      "position": [
-        1200,
-        912
-      ],
-      "id": "e9a9b8cd-3ae6-4750-a146-e6588669b68f",
-      "name": "Simple Memory"
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
@@ -216,7 +202,7 @@
       "typeVersion": 1,
       "position": [
         1328,
-        992
+        1008
       ],
       "id": "c3155f79-8713-4d32-96a9-6feca0df6438",
       "name": "Embeddings Cohere",
@@ -457,8 +443,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
       "typeVersion": 1,
       "position": [
-        608,
-        384
+        560,
+        368
       ],
       "id": "b69c8259-ea6a-4444-89c6-ec4620338a73",
       "name": "Embeddings Cohere1",
@@ -558,8 +544,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1904,
-        928
+        1920,
+        976
       ],
       "id": "113ce538-523a-48db-bee4-f003d8c65ffb",
       "name": "Wait",
@@ -665,17 +651,6 @@
           {
             "node": "Obtener transacciones fallidas",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -859,7 +834,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "0964d622-96ac-4b8e-8d81-84db52ab4fb4",
+  "versionId": "67ccd59f-5c0d-4278-afcc-49e375f59c3a",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "54f4344b2100efb40c8c3dfeacccac3d16c5515c1a0a570b2ec8e8be28ca5d98"
